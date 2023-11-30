@@ -19,9 +19,9 @@ const DailyData = () =>{
         labels: labels,
         datasets: [
           {
-            label: "My First dataset",
-            backgroundColor: "rgb(255, 99, 132)",
-            borderColor: "rgb(255, 99, 132)",
+            label: "Hourly Expenditure",
+            backgroundColor: "#2596be",
+            borderColor: "#2596be",
             data: dayData,
           },
           

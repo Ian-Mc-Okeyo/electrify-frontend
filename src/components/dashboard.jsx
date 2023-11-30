@@ -11,6 +11,7 @@ import Chart from "chart.js/auto";
 import { Line } from "react-chartjs-2";
 import DailyData from "./dailyData";
 import WeekData from "./weeklyData";
+import MonthlyData from "./monthlyData";
   
 const drawWidth = 240;
 const labels = ["January", "February", "March", "April", "May", "June"];
@@ -128,23 +129,7 @@ function Dashboard() {
                                 </div>
 
                                 <div className="tab-pane" id="tab-3">
-                                    <div className="row">
-                                        <div className="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
-                                            <h3>Voluptatibus commodi accusamu</h3>
-                                            <ul>
-                                                <li><i className="bi bi-check2-all"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                                                <li><i className="bi bi-check2-all"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                                                <li><i className="bi bi-check2-all"></i> Provident mollitia neque rerum asperiores dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</li>
-                                            </ul>
-                                            <p className="fst-italic">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                                            magna aliqua.
-                                            </p>
-                                        </div>
-                                        <div className="col-lg-6 order-1 order-lg-2 text-center">
-                                            <img  alt="" className="img-fluid"/>
-                                        </div>
-                                    </div>
+                                    <MonthlyData/>
                                 </div>
 
                                 </div>

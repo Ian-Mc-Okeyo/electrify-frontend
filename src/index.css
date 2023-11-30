@@ -32,6 +32,7 @@ body{
   margin-right: 2px;
   background-color: #FF4E00;
   border: 1px solid #543800
+  color(srgb red green #3737eb)
 }
 .login{
   background-color: #fbd127;

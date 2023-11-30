@@ -18,9 +18,9 @@ const WeekData = () =>{
         labels: labels,
         datasets: [
           {
-            label: "My First dataset",
-            backgroundColor: "rgb(255, 99, 132)",
-            borderColor: "rgb(255, 99, 132)",
+            label: "Daily Expenditure",
+            backgroundColor: "#2596be",
+            borderColor: "#2596be",
             data: weeksData,
           },
           
