@@ -17,6 +17,7 @@ import { useFormik } from 'formik';
 import ReactLoading from 'react-loading';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { setMtrNumber } from '../Slices/data';
 
 const Login = () =>{
     const [showPassword, setShowPassword] = React.useState(false);
@@ -39,6 +40,7 @@ const Login = () =>{
             
             dispatch(setUser(resp.data.user))
             dispatch(setToken(resp.data.token))
+            dispatch(setMtrNumber(resp.data.mtrNumber))
             toast("Login success", {
                 position: "top-center",
                 type:'success',
@@ -58,7 +60,7 @@ const Login = () =>{
             
         }).catch((err)=>{
             console.log(err);
-            toast("Login success", {
+            toast("Invalid Details", {
                 position: "top-center",
                 type:'error',
                 autoClose: 3000,

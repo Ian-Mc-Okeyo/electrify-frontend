@@ -43,6 +43,10 @@ const Register = () =>{
                 username: values.email,
                 email:values.email,
                 password: values.password,
+            },
+            meter:{
+                intialReading:values.meter_reading,
+                meterNumber: values.meter_number
             }
         }).then((resp)=>{
             console.log(resp.data)
@@ -80,7 +84,8 @@ const Register = () =>{
             lastName:'',
             email:'',
             password:'',
-            phoneNumber:''
+            phoneNumber:'',
+            meter_reading: ''
         },
         onSubmit
     })
@@ -134,7 +139,7 @@ const Register = () =>{
                                     
                                     />
                                 </div>
-                                <div className='col-md-6'>
+                                <div className='col-md-4'>
                                     <TextField
                                         label="Email"
                                         id="outlined-email-adornment"
@@ -146,7 +151,7 @@ const Register = () =>{
                                         value={values.email}                               
                                     />
                                 </div>
-                                <div className='col-md-6'>
+                                <div className='col-md-4'>
                                     <TextField
                                         label="Meter Number"
                                         id="outlined-meter-adornment"
@@ -156,6 +161,19 @@ const Register = () =>{
                                         onChange={handleChange}
                                         name='meter_number'
                                         value={values.meter_number}                               
+                                    />
+                                </div>
+                                <div className='col-md-4'>
+                                    <TextField
+                                        label="Meter Reading"
+                                        type='number'
+                                        id="outlined-meter-adornment"
+                                        fullWidth
+                                        size = 'small'
+                                        sx={{ m: 1 }}
+                                        onChange={handleChange}
+                                        name='meter_reading'
+                                        value={values.meter_reading}                               
                                     />
                                 </div>
                                 <div className='col-md-6'>

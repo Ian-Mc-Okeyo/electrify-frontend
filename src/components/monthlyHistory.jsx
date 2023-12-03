@@ -6,12 +6,14 @@ import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { useSelector } from "react-redux";
 
-const labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov","Dec"]
-const MonthlyData = () =>{
+
+const labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov","dev"]
+const MonthlyHistory = () =>{
     const baseurl = "http://127.0.0.1:8000/api/v1/user"
     const [loading, setIsLoading] = useState(true)
     const email = useSelector((state) => state.auth.user.email)
     const mtrNumber = useSelector((state) => state.data.mtrNumber)
+
     
     const [monthsData, setMonthsData] = useState([])
     const [lastMonthReading, setLastMonthReading] = useState(100)
@@ -29,7 +31,7 @@ const MonthlyData = () =>{
         ],
       };
 
-    const getData = ()=>{
+    useEffect(()=>{
         axios.get(baseurl+`/month-data/${email}/${mtrNumber}`).then((resp)=>{
             console.log(resp)
             setMonthsData(resp.data.data.month_data)
@@ -38,29 +40,37 @@ const MonthlyData = () =>{
         }).catch((err)=>{
             console.log(err)
         })
-    }
-
-    useEffect(()=>{
-        getData()
-        const interval = setInterval(() => {
-                getData()
-            }, 5000)
-        
-        return () => clearInterval(interval)
     }, [])
-
     
     return(
         <div className="row justify-content-center">
             
-            <div className="col-md-4 col-5">
-                <CircularProgressbar value={thisMonthReading} maxValue={lastMonthReading} text={`${thisMonthReading}`} />
-            </div>
-            <div className="col-md-8 col-12">
-                <Line data={data}/>
+            <div className='tableBody'>
+                        <table className="table table-striped table-hover" style={{padding: '10px'}}>
+                            <thead>
+                                <tr className='display-6' style={{fontSize: '1.1em', fontFamily:'monospace'}}>
+                                    <th scope="col">Month Number</th>
+                                    <th scope="col">Consumption</th>                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                {
+                                    monthsData.map((month, index)=>{
+                                        return(
+                                            <tr key={index}>                                                
+                                                <td>{`Month ${index+1}`}</td>
+                                                <td>{month}</td>
+                                            </tr>
+                                        )
+                                    })
+                                }
+                                
+                            </tbody>
+                        </table>
             </div>
         </div>
     )
 }
 
-export default MonthlyData;
+export default MonthlyHistory;

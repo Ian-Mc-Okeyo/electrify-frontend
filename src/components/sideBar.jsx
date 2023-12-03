@@ -11,6 +11,8 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Divider from "@mui/material/Divider"; 
 import Typography from "@mui/material/Typography";
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { 
     Edit,
@@ -22,6 +24,7 @@ import {
 } from "@mui/icons-material"; 
 
 const responsiveDrawer = ( 
+    
     <div style={{ backgroundColor: "#000a23",  
         height: "100%" }}> 
         <Toolbar /> 
@@ -32,31 +35,40 @@ const responsiveDrawer = (
         > 
             Electrify.com
         </Typography> 
-        <List sx={{ backgroundColor: "#000a23" }}> 
-            <ListItemButton sx={{ color: "white" }}> 
-                <ListItemIcon sx={{ color: "white" }}> 
-                    {<Dashboard />} 
-                </ListItemIcon> 
-                <ListItemText primary={"Dashboard"} /> 
-            </ListItemButton> 
-            <ListItemButton sx={{ color: "white" }}> 
-                <ListItemIcon sx={{ color: "white" }}> 
-                    {<History />} 
-                </ListItemIcon> 
-                <ListItemText primary={"History"} /> 
-            </ListItemButton> 
-            <ListItemButton sx={{ color: "white" }}> 
-                <ListItemIcon sx={{ color: "white" }}> 
-                    {<AttachMoney />} 
-                </ListItemIcon> 
-                <ListItemText primary={"My Bill"} /> 
-            </ListItemButton> 
-            <ListItemButton sx={{ color: "white" }}> 
-                <ListItemIcon sx={{ color: "white" }}> 
-                    {<AccountBox />} 
-                </ListItemIcon> 
-                <ListItemText primary={"My Profile"} /> 
-            </ListItemButton> 
+        <List sx={{ backgroundColor: "#000a23", textDecoration: 'none' }}>
+            <Link to='/dashboard'>
+                <ListItemButton sx={{ color: "white" }}> 
+                    <ListItemIcon sx={{ color: "white" }}> 
+                        {<Dashboard />} 
+                    </ListItemIcon> 
+                    <ListItemText primary={"Dashboard"}/> 
+                </ListItemButton> 
+            </Link>
+            <Link to='/history'>
+                <ListItemButton sx={{ color: "white" }}> 
+                    <ListItemIcon sx={{ color: "white" }}> 
+                        {<History />} 
+                    </ListItemIcon> 
+                    <ListItemText primary={"History"} /> 
+                </ListItemButton> 
+            </Link>
+            <Link to='/my-bill'>
+                <ListItemButton sx={{ color: "white" }}> 
+                    <ListItemIcon sx={{ color: "white" }}> 
+                        {<AttachMoney />} 
+                    </ListItemIcon> 
+                    <ListItemText primary={"My Bill"} /> 
+                </ListItemButton> 
+            </Link>
+            <Link to='/profile'>
+                <ListItemButton sx={{ color: "white" }}> 
+                    <ListItemIcon sx={{ color: "white" }}> 
+                        {<AccountBox />} 
+                    </ListItemIcon> 
+                    <ListItemText primary={"My Profile"} /> 
+                </ListItemButton> 
+            </Link>
+            
         </List> 
         <Divider /> 
         <List> 
@@ -74,8 +86,9 @@ const responsiveDrawer = (
                 borderRadius: 10, 
                 textAlign: "center", 
                 padding: 1, 
-                margin: 2, 
-            }} 
+                margin: 2,
+            }}
+            
         > 
             LogOut
         </Typography> 
@@ -91,6 +104,7 @@ const SideBar = () =>{
     const handleToggle = () => { 
         dispatch(setMobileViewOpen(!mobileViewOpen)); 
     }; 
+
     return(
                     <Box 
                         component="nav"

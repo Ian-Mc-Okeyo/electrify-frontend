@@ -8,11 +8,20 @@ import IconButton from "@mui/material/IconButton";
 import Toolbar from "@mui/material/Toolbar"; 
 import Typography from "@mui/material/Typography";
 import MenuIcon from "@mui/icons-material/Menu"; 
+import { useNavigate } from 'react-router-dom';
+import logoutUser from '../Slices/auth'
 
 const NavBar = () =>{
     const drawWidth = 240; 
     const dispatch = useDispatch();
     const mobileViewOpen = useSelector((state)=>state.data.mobileViewOpen);
+
+    const navigate = useNavigate()
+    const logout = () =>{
+        dispatch(logoutUser)
+        navigate('/')
+        console.log('logout')
+    }
 
     const handleToggle = () => { 
         dispatch(setMobileViewOpen(!mobileViewOpen)); 
@@ -35,10 +44,21 @@ const NavBar = () =>{
                                 sx={{ mr: 2, display: { sm: "none" } }} 
                             >
                                 <MenuIcon /> 
-                            </IconButton> 
-                            <Typography variant="h6" sx={{color: "whitesmoke" }} > 
-                                Welcome to Electrify
-                            </Typography> 
+                            </IconButton>
+                            <div className='row justify-content-between'>
+                                <div className='col-6'>
+                                    <Typography variant="h6" sx={{color: "whitesmoke" }} > 
+                                        Welcome to Electrify
+                                    </Typography> 
+                                </div>
+                                <div className='col-6'>
+                                    <a role='button' onClick={logout} style={{textAnchor: 'right'}}>
+                                    Logout
+                                    </a>
+                                </div>
+                            </div>
+                            
+                           
                         </Toolbar> 
                     </AppBar>
     )

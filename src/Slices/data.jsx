@@ -3,7 +3,8 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     userData: {},
-    mobileViewOpen: false
+    mobileViewOpen: false,
+    mtrNumber: '',
 }
 
 export const dataSlice = createSlice({
@@ -13,12 +14,15 @@ export const dataSlice = createSlice({
         setUserData: (state, action) => {
             state.userData = action.payload
         },
+        setMtrNumber: (state, action) => {
+            state.mtrNumber = action.payload
+        },
         setMobileViewOpen: (state, action) => {
             state.mobileViewOpen = action.payload
         }
     }
 })
 
-export const { setUserData, setMobileViewOpen } = dataSlice.actions
+export const { setUserData, setMobileViewOpen, setMtrNumber } = dataSlice.actions
 
 export default dataSlice.reducer

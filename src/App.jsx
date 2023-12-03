@@ -12,7 +12,7 @@ import Login from './components/login';
 import Register from './components/register';
 import Dashboard from './components/dashboard';
 import History from './components/history';
-
+import UserBill from './components/myBill';
 function App() {
   const [count, setCount] = useState(0)
 
@@ -24,6 +24,7 @@ function App() {
         <Route path='/register' Component={Register}/>
         <Route path='/dashboard' Component={Dashboard}/>
         <Route path='/history' Component={History}/>
+        <Route path='/my-bill' Component={UserBill}/>
       </Routes>
     </Router>
   )

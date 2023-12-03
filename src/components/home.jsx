@@ -8,21 +8,20 @@ const Home = () =>{
                     <br/>
                     <br/>
                     <br/>
-            <div className='d-flex align-items-center my-auto mx-auto'>
-                <div id = "sample-text-card" className='m-4 col-md-6 border-0 home-text-box bg-transparent'>
+            <div className='d-flex align-items-center my-auto mx-auto' >
+                <div id = "sample-text-card" className='m-4 col-md-6 border-0 home-text-box bg-transparent' style={{textAlign: 'center'}}>
                     <div className='card-body'>
                         <h1 className='mb-3' style={{color: '#fbd127'}}>Electrify.com</h1>
                         <h5 className='card-title'>
-                            Realtime Electrical Bill Manager
+                            Realtime Monitoring System
                         </h5>
                         <br/>
                         <p className='card-text'>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna 
-                            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            
                         </p>
                         <div className='button-wrapper d-flex align-items-center'>
                             <Link to='/register' className='btn btn-md register' role='button'>Register</Link>
-                            <a className='btn btn-md login' role='button'>Login</a>
+                            <Link to='login' className='btn btn-md login' role='button'>Login</Link>
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-import React from "react"; 
+import React, {useEffect, useState} from "react"; 
 import Box from "@mui/material/Box"; 
 import CssBaseline from "@mui/material/CssBaseline"; 
 import Toolbar from "@mui/material/Toolbar"; 
@@ -12,7 +12,10 @@ import { Line } from "react-chartjs-2";
 import DailyData from "./dailyData";
 import WeekData from "./weeklyData";
 import MonthlyData from "./monthlyData";
-  
+import axios from 'axios';
+import { useSelector } from "react-redux";
+
+
 const drawWidth = 240;
 const labels = ["January", "February", "March", "April", "May", "June"];
 
@@ -34,7 +37,31 @@ const data = {
   ],
 };
   
-function Dashboard() {   
+function Dashboard() {
+    const baseurl = 'http://localhost:8000/api/v1/user';
+    const [mtrReading, setMtrReading] = useState('')
+
+    const email = useSelector((state) => state.auth.user.email)
+    const mtrNumber = useSelector((state) => state.data.mtrNumber)
+    console.log(email)
+    console.log(mtrNumber)
+
+
+    const getData = ()=>{
+        axios.get(baseurl+`/dashboard-data/${email}/${mtrNumber}`).then((resp) => {
+            console.log(resp.data)
+            setMtrReading(resp.data.data.currentReading)
+        })
+    }
+    useEffect(()=>{
+        getData()
+        const interval = setInterval(() => {
+                getData()
+            }, 5000)
+        
+        return () => clearInterval(interval)
+    }, [])
+
     
     return ( 
         <div> 
@@ -60,7 +87,7 @@ function Dashboard() {
                                     <div className="card-body">
                                         <h5 className="card-title dashboard-h3">Meter Reading</h5>
                                        
-                                        <h6 className="display-6">4595</h6>                   
+                                        <h6 className="display-6">{mtrReading}</h6>                   
                                         
                                     </div>
                                 </div>
@@ -71,7 +98,7 @@ function Dashboard() {
                                     <div className="card-body">
                                         <h5 className="card-title dashboard-h3">Total Bill</h5>
                                        
-                                        <h6 className="display-6">4595</h6>                   
+                                        <h6 className="display-6">1500</h6>                   
                                         
                                     </div>
                                 </div>
@@ -81,7 +108,7 @@ function Dashboard() {
                                     <div className="card-body">
                                         <h5 className="card-title dashboard-h3">Cost P/U</h5>
                                         
-                                        <h6 className="display-6">4595</h6>                   
+                                        <h6 className="display-6">12.24</h6>                   
                                     </div>
                                 </div>
                             </div>                           
